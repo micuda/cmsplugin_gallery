@@ -21,9 +21,11 @@ HELPER_SETTINGS = {
     ]
 }
 
+
 def run():
     from djangocms_helper import runner
     runner.cms('cmsplugin_gallery')
+
 
 if __name__ == '__main__':
     run()

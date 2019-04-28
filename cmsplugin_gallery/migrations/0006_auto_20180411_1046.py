@@ -26,6 +26,7 @@ def migrate_to_filer(apps, schema_editor):
     except Exception as e:
         print e
 
+
 class Migration(migrations.Migration):
 
     dependencies = [
