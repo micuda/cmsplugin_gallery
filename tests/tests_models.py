@@ -2,7 +2,6 @@
 from django.test import TestCase
 from cmsplugin_gallery.models import GalleryPlugin, Image as GalleryImage
 from django.core.files import File
-import filer.fields.image
 
 
 class GalleryTestCase(TestCase):
