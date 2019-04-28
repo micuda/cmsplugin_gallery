@@ -14,7 +14,11 @@ setup(
     packages=['cmsplugin_gallery'],
     provides=['cmsplugin_gallery'],
     include_package_data=True,
-    install_requires = ['django-cms>=3.2.0', 'django-inline-ordering>=0.1.1',
-        'easy-thumbnails', 'django-filer>=1.2.4',],
+    install_requires = [
+        'django-cms>=3.2.0',
+        'django-inline-ordering>=0.1.1',
+        'easy-thumbnails',
+        'django-filer>=1.2.4',
+    ],
     test_suite='tests.settings.run',
 )
