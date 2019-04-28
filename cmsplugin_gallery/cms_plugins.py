@@ -13,6 +13,7 @@ if hasattr(settings, 'GALLERY_PLUGIN_MODULE_NAME'):
 else:
     MODULE_NAME = 'UI'
 
+
 class CMSGalleryPlugin(CMSPluginBase):
 
     model = models.GalleryPlugin

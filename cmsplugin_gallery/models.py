@@ -31,9 +31,11 @@ class UploadPath(object):
         self.path = sub_path
 
     def __call__(self, instance, filename):
-        return "gallery/%s" % (filename)
+        return "gallery/%s" % filename
+
 
 get_upload_path = UploadPath('GalleryPlugin')
+
 
 class GalleryPlugin(CMSPlugin):
 
@@ -51,7 +53,7 @@ class GalleryPlugin(CMSPlugin):
     def copy_relations(self, oldinstance):
         for img in oldinstance.image_set.all():
             new_img = Image()
-            new_img.gallery=self
+            new_img.gallery = self
             new_img.image_src = img.image_src
             new_img.src_height = img.src_height
             new_img.src_width = img.src_width
@@ -61,8 +63,7 @@ class GalleryPlugin(CMSPlugin):
             new_img.save()
 
     overlay_image = models.ImageField(_("Overlay Image"), upload_to=get_upload_path, null=True, blank=True)
-    overlay_position = models.IntegerField(default=BOTTOM_LEFT,
-        choices=OVERLAY_POSITION_CHOICES)
+    overlay_position = models.IntegerField(default=BOTTOM_LEFT, choices=OVERLAY_POSITION_CHOICES)
     template = models.CharField(max_length=255,
                                 choices=TEMPLATE_CHOICES,
                                 default=TEMPLATE_CHOICES[0][0],
@@ -92,8 +93,9 @@ class Image(Orderable):
             return pages[0].get_media_path(filename)
         else:
             today = date.today()
-            return os.path.join(get_cms_setting('PAGE_MEDIA_PATH'),
-                str(today.year), str(today.month), str(today.day), filename)
+            return os.path.join(
+                get_cms_setting('PAGE_MEDIA_PATH'), str(today.year), str(today.month), str(today.day), filename
+            )
 
     gallery = models.ForeignKey(GalleryPlugin, verbose_name=_("Gallery"))
     image_src = FilerImageField(
